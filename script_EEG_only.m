@@ -57,6 +57,23 @@ for isubj = 1:nsubj
     EEG_Tlat = eeg_checkset(EEG_Tlat);
 
 
+    %% new EEG with swapped elec
+    % new EEG swapped for left/right so that the diff btween new EEG
+    % and orig EEG (ersp{3}) is contra vs ipsi on the left and 
+    % ipsi vs contra on the right - no need of a baseline
+    left = [EEG_Tlat.chanlocs(:).Y] > 0.0001;
+    right = [EEG_Tlat.chanlocs(:).Y] < -0.0001;
+    center = [EEG_Tlat.chanlocs(:).Y] > -0.0001 & [EEG_Tlat.chanlocs(:).Y] < 0.0001;
+    sum(left) + sum(right) + sum(center)
+    
+    % swap Target lat eeg
+    swap_EEG_Tlat = EEG_Tlat;
+    swap_EEG_Tlat.data(left,:,:) = EEG_Tlat.data(right,:,:);
+    swap_EEG_Tlat.data(right,:,:) = EEG_Tlat.data(left,:,:);
+    % swap Distractor lat eeg
+    swap_EEG_Dlat = EEG_Dlat;
+    swap_EEG_Dlat.data(left,:,:) = EEG_Dlat.data(right,:,:);
+    swap_EEG_Dlat.data(right,:,:) = EEG_Dlat.data(left,:,:);
 
 
     %% calculate ft
