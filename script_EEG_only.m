@@ -1,7 +1,7 @@
 %% Toolboxes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % CosmoMVPA toolbox
-run('/rds/projects/2018/hickeycm-insense/MATLAB_toolboxes/CoSMoMVPA-master/mvpa/cosmo_set_path.m')
+%run('/rds/projects/2018/hickeycm-insense/MATLAB_toolboxes/CoSMoMVPA-master/mvpa/cosmo_set_path.m')
 
 % SPM toolbox (if needed)
 % run('/rds/projects/2018/hickeycm-insense/EEG-fMRI/analys_scripts/MRI/initialise_spm.m')
@@ -23,7 +23,7 @@ root_dir = '/rds/projects/2018/hickeycm-insense/EEG-fMRI';
 save_dir = fullfile(root_dir,'alpha_power_analys','output_data');
 
 % Common grey matter mask for all participants (searchlight or any area of the brain)
-mask_file = fullfile(root_dir,'DATA','group_mask_grey.nii');
+%mask_file = fullfile(root_dir,'DATA','group_mask_grey.nii');
 
 % If you want to work on the OSC only, you can use this mask 
 % (generated from Target classification searchlight):
