@@ -2,13 +2,17 @@ clear all; close all;
 
 eeglab nogui
 
-working_directory = 'C:\Users\bill5\OneDrive - University of Birmingham\Desktop\EEG_davis\to do';
-cd 'C:\Users\bill5\OneDrive - University of Birmingham\Desktop\EEG_davis\to do';
+working_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\analys_scripts\';
+
+output_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\output_data\';
+
+
 
 %% let's normalize:
-if ~isfile([working_directory '\lat_mat_ft.mat'])
-     % File does not exists. Create file.
-    load('tf_ga.mat')
+if ~isfile([output_directory 'norm_tf_ga.mat'])
+    
+    % File does not exists. Create file.
+    load([output_directory 'tf_26x50_baselineNaN_ersp_swapTlatVSTlat\' 'tf_ga.mat'])
     times = times{1};
     freqs = freqs{1}; 
     % load('example_tf.mat')
@@ -58,12 +62,12 @@ if ~isfile([working_directory '\lat_mat_ft.mat'])
             
         end
     end
-    save([working_directory '\lat_mat_ft.mat'], ...
+    save([output_directory 'norm_tf_ga.mat'], ...
         'Tlat_mat', 'Dlat_mat', 'times', 'freqs', ...
         '-v7.3')
 end
 % File exist. Load file.
-load([working_directory '\lat_mat_ft.mat'])
+load([output_directory 'norm_tf_ga.mat'])
      
 
 
