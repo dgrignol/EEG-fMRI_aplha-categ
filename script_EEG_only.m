@@ -103,7 +103,7 @@ for isubj = 1:nsubj
             itcboot{electrode}, tfdata{1}{electrode}] = ... % , tfdata{1}{electrode}
             newtimef({swap_EEG_Tlat.data(electrode,:,:) EEG_Tlat.data(electrode,:,:)}, ...
             EEG_Tlat.pnts, [EEG_Tlat.xmin EEG_Tlat.xmax]*1000, EEG_Tlat.srate, [0.5 3], ...
-            'plotphase', 'off', 'timesout', 50, 'plotersp', 'off', 'plotitc', 'off', 'maxfreq', 52,'padratio', 16, 'baseline', NaN, 'outputformat', 'old', 'scale', 'abs','verbose', 'off'); %'padratio', 16, 
+            'plotphase', 'off', 'timesout', 50, 'plotersp', 'off', 'plotitc', 'off', 'maxfreq', 52,'padratio', 8, 'baseline', NaN, 'outputformat', 'old', 'scale', 'abs','verbose', 'off'); %'padratio', 16, 
 
         cdn(isubj, electrode,:,:) = ersp{electrode}{3}; 
         Tlat_ersp(isubj, electrode,:,:) = ersp{electrode}{2};
