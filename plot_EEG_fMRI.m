@@ -14,7 +14,7 @@ try
 
     output_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\output_data\';
     
-    sep = "\";
+    sep = '\';
 
 catch 
     
@@ -24,20 +24,19 @@ catch
     
     output_directory = '/rds/projects/2018/hickeycm-insense/EEG-fMRI/alpha_power_analys/output_data/';
     
-    sep = "/";
+    sep = '/';
 end
 
 %% let's normalize:
-if ~isfile([output_directory 'norm_tf_ga.mat'])
     
     % File does not exists. Create file.
-    load([output_directory 'tf_26x50_baselineNaN_ersp_swapTlatVSTlat' sep 'tf_ga.mat'])
+    load([output_directory 'tf_ga.mat'])
     times = times{1};
     freqs = freqs{1}; 
     % load('example_tf.mat')
     % Tlat_tfdata = example;
     % clear Tlat_tfdata_all
-    ciao = {Tlat_tfdata Dlat_tfdata};
+    % ciao = {Tlat_tfdata Dlat_tfdata};
 %     % 1. absolute value
 %     Tlat_tfdata = cellfun(@(x) abs(x).^2,Tlat_tfdata,'UniformOutput',false);
 %     Dlat_tfdata = cellfun(@(x) abs(x).^2,Dlat_tfdata,'UniformOutput',false);
@@ -81,12 +80,7 @@ if ~isfile([output_directory 'norm_tf_ga.mat'])
             
         end
     end
-    save([output_directory 'norm_tf_ga.mat'], ...
-        'Tlat_mat', 'Dlat_mat', 'times', 'freqs', ...
-        '-v7.3')
-end
-% File exist. Load file.
-load([output_directory 'norm_tf_ga.mat'])
+
      
 
 
