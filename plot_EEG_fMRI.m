@@ -1,18 +1,37 @@
 clear all; close all; 
 
-eeglab nogui
+try 
+    eeglab nogui
+catch
+    run('/rds/projects/2018/hickeycm-insense/MATLAB_toolboxes/eeglab14_1_2b/eeglab.m');
 
-working_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\analys_scripts\';
+end
 
-output_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\output_data\';
+try 
+    cd '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\analys_scripts\';
+    
+    working_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\analys_scripts\';
 
+    output_directory = '\\its-rds.bham.ac.uk\rdsprojects\2018\hickeycm-insense\EEG-fMRI\alpha_power_analys\output_data\';
+    
+    sep = "\";
 
+catch 
+    
+    cd '/rds/projects/2018/hickeycm-insense/EEG-fMRI/alpha_power_analys/analys_scripts/';
+
+    working_directory = '/rds/projects/2018/hickeycm-insense/EEG-fMRI/alpha_power_analys/analys_scripts/';
+    
+    output_directory = '/rds/projects/2018/hickeycm-insense/EEG-fMRI/alpha_power_analys/output_data/';
+    
+    sep = "/";
+end
 
 %% let's normalize:
 if ~isfile([output_directory 'norm_tf_ga.mat'])
     
     % File does not exists. Create file.
-    load([output_directory 'tf_26x50_baselineNaN_ersp_swapTlatVSTlat\' 'tf_ga.mat'])
+    load([output_directory 'tf_26x50_baselineNaN_ersp_swapTlatVSTlat' sep 'tf_ga.mat'])
     times = times{1};
     freqs = freqs{1}; 
     % load('example_tf.mat')
